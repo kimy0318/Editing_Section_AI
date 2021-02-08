@@ -26,18 +26,10 @@ Reading input video
 """
 
 # Defining 'VideoCapture' object
-# and reading video from a file
-# Pay attention! If you're using Windows, the path might looks like:
-# r'videos\traffic-cars.mp4'
-# or:
-# 'videos\\traffic-cars.mp4'
 video = cv2.VideoCapture('/Users/kimkwangil/Documents/VISION2020/김윤하_영상AI/movie/Scence1/DSCF0319.MP4')
 
-# Preparing variable for writer
-# that we will use to write processed frames
 writer = None
 
-# Preparing variables for spatial dimensions of the frames
 h, w = None, None
 
 length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -55,7 +47,7 @@ II. Image Labeling
 First, the keywords and topic words of the script will be extracted using NLP code.
 The number of keywords that needs to be extracted can be cut down by only extracting the nouns. 
 
-
+# Extraction of Keywords
 from collections import OrderedDict
 import numpy as np
 import spacy
@@ -140,6 +132,7 @@ class TextRank4Keyword():
             
 Next, the keywords will be matched with the objects of the footage.
 With the labeled objects from the previous coding, the keywords from the script can be matched with the objects from the frame. 
+
 # Preparing text with label and confidence for current bounding box
             text_box_current = '{}: {:.4f}'.format(labels[int(class_numbers[i])], # >>>>>>>>>>> 여기의 레이블과 사니라오의 토픽이 같으면, 시간을 기록하거나 화면에 편집구간 표시할 것
                                                    confidences[i])
